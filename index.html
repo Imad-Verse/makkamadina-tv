@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <!-- تحسين إعدادات viewport للجوال -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description"
+        content="بث مباشر للحرمين الشريفين - مكة المكرمة والمدينة المنورة - من هيئة الإذاعة والتلفزيون" />
+    <title>البث المباشر للحرمين الشريفين</title>
+    <!-- تضمين مكتبة Video.js -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/8.5.2/video-js.min.css" rel="stylesheet" />
+    <link
+        href='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhgj63bVRhK07GULXvcKZy6qYy6VhENM_drnAK3olx0_fLVLSmVI1cgWts9sD5pGJpQ9HC6IehBXcjlYM4hvJsbqwveaBokM1BqyVGrLsLaxxHm13uU1sqsAIKg52yEWJ2xCC04-pXXZ0iTAwWvOBbc7nOGyGpIDCWatfstuSnhnhpVC8ZXlRshdWcaHFH1/s0/unnamed.png'
+        rel='icon' type='image/jpeg' />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <header class="fade-in">
+        <h1>البث المباشر للحرمين الشريفين</h1>
+    </header>
+
+    <main class="main-content">
+        <!-- بث مباشر الحرم المكي -->
+        <article class="video-container glass fade-in" style="animation-delay: 0.2s;">
+            <div class="video-header">
+                <h2><span>🕋</span> الحرم المكي الشريف</h2>
+                <div class="live-badge">مباشر</div>
+            </div>
+            <p>بث حي ومباشر على مدار الساعة من المسجد الحرام بمكة المكرمة.</p>
+            <div class="vjs-matrix">
+                <video id="quranLive" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto"
+                    width="640" height="360"
+                    poster="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxFl5_NA87lJar5MDah8LO5mHCM3UZIXcokBRjg64Iq6NU88qrgbIkqeU252ZBTVKmRYiYNOVBb93Jy5LqaFWgk3_6on--noUp3Y4FCKFs7Mwfe2pR-h2osYFOfosi5Se6XYXBrAlDexnI1sepF7lSFMtWa0v0efRG9fQQ5ajZr7Y6joYSvYlMqrS6/s480/masjid-haram.jpg">
+                    <source src="https://win.holol.com/live/quran/playlist.m3u8" type="application/x-mpegURL" />
+                </video>
+            </div>
+        </article>
+
+        <!-- بث مباشر الحرم النبوي -->
+        <article class="video-container glass fade-in" style="animation-delay: 0.4s;">
+            <div class="video-header">
+                <h2><span>🕌</span> الحرم النبوي الشريف</h2>
+                <div class="live-badge">مباشر</div>
+            </div>
+            <p>بث حي ومباشر على مدار الساعة من المسجد النبوي بالمدينة المنورة.</p>
+            <div class="vjs-matrix">
+                <video id="sunnahLive" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto"
+                    width="640" height="360" poster="https://i.ytimg.com/vi/Kt7hKHlArl8/maxresdefault.jpg">
+                    <source src="https://win.holol.com/live/sunnah/playlist.m3u8" type="application/x-mpegURL" />
+                </video>
+            </div>
+        </article>
+
+        <!-- قسم الإحصائيات -->
+        <section class="stats-section fade-in" style="animation-delay: 0.6s;">
+            <div class="visitor-card glass">
+                <div class="visitor-info">
+                    <div class="visitor-icon">👥</div>
+                    <div class="visitor-label">إجمالي الزيارات من حول العالم</div>
+                </div>
+                <div class="visitor-count" id="globalCounter">0000</div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="glass-footer fade-in">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Column 1: About -->
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhgj63bVRhK07GULXvcKZy6qYy6VhENM_drnAK3olx0_fLVLSmVI1cgWts9sD5pGJpQ9HC6IehBXcjlYM4hvJsbqwveaBokM1BqyVGrLsLaxxHm13uU1sqsAIKg52yEWJ2xCC04-pXXZ0iTAwWvOBbc7nOGyGpIDCWatfstuSnhnhpVC8ZXlRshdWcaHFH1/s0/unnamed.png"
+                            alt="Logo" class="footer-image">
+                        <h3>البث المباشر للحرمين</h3>
+                    </div>
+                    <p class="footer-desc">منصة رقمية متطورة تهدف إلى تقريب القلوب من خلال نقل البث الحي والمباشر
+                        للحرمين الشريفين بأعلى جودة تقنية ممكنة.</p>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://alshehabdz.blogspot.com" target="_blank" rel="noopener"><span>🕌</span>
+                                موقع مركز الشهاب الدعوي</a></li>
+                        <li><a href="https://abulharith-imad.site/apps/com_imad_oebslafi04.apk"
+                                class="app-download-link"><span>🤖</span> حمل تطبيق الشهاب</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact/Support -->
+                <div class="footer-section">
+                    <h4>تواصل معنا</h4>
+                    <div class="contact-info">
+                        <p><span>📧</span> <a href="mailto:alshehabdz@gmail.com"
+                                class="footer-email">alshehabdz@gmail.com</a></p>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/alShehabDz/" target="_blank" rel="noopener"
+                                class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://x.com/alShehabDz" target="_blank" rel="noopener" class="social-icon"
+                                title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                            <a href="https://www.youtube.com/@alShehabDz" target="_blank" rel="noopener"
+                                class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.instagram.com/alshehabdz/" target="_blank" rel="noopener"
+                                class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="copyright-text">
+                    <p>جميع الحقوق محفوظة &copy; (2025 - <span id="currentYear">2025</span>) - منصة الحرمين الشريفين</p>
+                </div>
+                <div class="developer-info">
+                    <p>تم التطوير بكل ❤️ بواسطة <a href="https://abulharith-imad.site" target="_blank"
+                            rel="noopener">أبو الحارث عماد بعلول</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- تضمين سكريبت Video.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/8.5.2/video.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
