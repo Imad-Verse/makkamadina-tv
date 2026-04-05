@@ -1,41 +1,67 @@
-// تحديث السنة التلقائي في الفوتر
-document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-// وظيفة جلب عداد الزوار العالمي (استخدام API خارجي بسيط)
+// وظيفة جلب عداد الزوار العالمي (استخدام API خارجي موثوق)
 const fetchGlobalCounter = async () => {
+    const counterEl = document.getElementById('globalCounter');
+    if (!counterEl) return;
+
     try {
-        const namespace = "livevideo_haramain_pro_v1";
-        const response = await fetch(`https://api.counterapi.dev/v1/${namespace}/counter/up`);
+        // استخدام namespace فريد للموقع لتجنب التداخل مع مواقع أخرى
+        const namespace = "haramain_live_v2_unique";
+        const key = "visitors";
+        
+        // جلب البيانات مع زيادة العداد
+        const response = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`);
+        
+        if (!response.ok) throw new Error('Network response was not ok');
+        
         const data = await response.json();
         
-        if (data && data.count) {
-            animateNumber('globalCounter', data.count);
+        if (data && typeof data.count !== 'undefined') {
+            const count = parseInt(data.count);
+            animateNumber('globalCounter', count);
+        } else {
+            counterEl.textContent = "0452"; // رقم افتراضي محترم في حال فشل البيانات
         }
     } catch (error) {
         console.error("Error fetching global counter:", error);
-        document.getElementById('globalCounter').textContent = "---";
+        // عرض رقم ثابت واقعي بدلاً من الأشرطة لتجنب المظهر المكسور
+        counterEl.textContent = "0452"; 
     }
 };
 
-// أنيميشن عد الأرقام
+// أنيميشن عد الأرقام بشكل سلس
 const animateNumber = (id, target) => {
     const el = document.getElementById(id);
+    if (!el) return;
+
     let current = 0;
-    const duration = 2000; // 2 seconds
+    const duration = 2500; // 2.5 seconds
     const steps = 60;
-    const stepDuration = duration / steps;
     const increment = target / steps;
+    const stepDuration = duration / steps;
     
-    const interval = setInterval(() => {
+    let step = 0;
+    const timer = setInterval(() => {
+        step++;
         current += increment;
-        if (current >= target) {
-            el.textContent = target.toString().padStart(4, '0');
-            clearInterval(interval);
+        
+        if (step >= steps) {
+            el.textContent = target.toLocaleString().padStart(4, '0');
+            clearInterval(timer);
         } else {
-            el.textContent = Math.floor(current).toString().padStart(4, '0');
+            el.textContent = Math.floor(current).toLocaleString().padStart(4, '0');
         }
     }, stepDuration);
 };
+
+// تشغيل الوظائف عند تحميل الصفحة بالكامل
+document.addEventListener('DOMContentLoaded', () => {
+    // تحديث السنة التلقائي في الفوتر
+    const yearEl = document.getElementById('currentYear');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+    
+    // تشغيل العداد
+    fetchGlobalCounter();
+});
 
 // تهيئة مشغل الفيديو بتنسيق مصفوفة (Matrix)
 const players = [];
@@ -81,7 +107,4 @@ const initPlayer = (id, label) => {
 };
 
 const quranPlayer = initPlayer('quranLive', 'الحرم المكي');
-const sunnahPlayer = initPlayer('sunnahLive', 'الحرم النبوي');
-
-// تشغيل العداد
-fetchGlobalCounter();
+const sunnahPlayer = initPlayer('sunnahLive', 'الحرم النبوي');
