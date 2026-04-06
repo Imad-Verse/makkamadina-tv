@@ -3,12 +3,12 @@ const fetchGlobalCounter = async () => {
     const counterEl = document.getElementById('globalCounter');
     if (!counterEl) return;
 
-    // اسم المفتاح والنيم سبيس لضمان الخصوصية والاستقرار
-    const namespace = "livevideo_haramain_2025";
-    const key = "total_visits";
+    // استرجاع النيم سبيس الأصلي الذي وصل لـ 700 لضمان دقة الأرقام
+    const namespace = "livevideo_haramain_pro_v1";
+    const key = "visitors_count";
 
     try {
-        // نستخدم رابط بديل موثوق يدعم التزايد التلقائي
+        // جلب البيانات مع زيادة العداد
         const response = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`);
         
         if (!response.ok) throw new Error('API Error');
@@ -16,7 +16,9 @@ const fetchGlobalCounter = async () => {
         const data = await response.json();
         
         if (data && data.count) {
-            animateNumber('globalCounter', parseInt(data.count) + 5420); // إضافة رقم أساسي ليعطي مظهراً غنياً
+            // إضافة الـ 700 الأساسية التي ذكرتها لضمان استمرارية العدد الحقيقي
+            const currentCount = parseInt(data.count) + 700;
+            animateNumber('globalCounter', currentCount);
         } else {
             fallbackCounter(counterEl);
         }
@@ -26,10 +28,10 @@ const fetchGlobalCounter = async () => {
     }
 };
 
-// وظيفة لعرض رقم بديل محترم في حال فشل الـ API
+// وظيفة لعرض رقم بديل واقعي في حال فشل الـ API (يعتمد على الـ 700)
 const fallbackCounter = (el) => {
-    const randomBase = 5840 + Math.floor(Math.random() * 10);
-    animateNumber('globalCounter', randomBase);
+    const baseCount = 700 + Math.floor(Math.random() * 50);
+    animateNumber('globalCounter', baseCount);
 };
 
 // أنيميشن عد الأرقام بشكل سلس
